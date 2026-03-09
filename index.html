@@ -1,127 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arcan Labs</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arcan Labs</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Font Awesome Icons -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome Icons -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <style>
+      :root {
+        --bg-gradient-start: #0f172a;
+        --bg-gradient-end: #1e293b;
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border-color: #334155;
+        --hover-bg: #334155;
+      }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #f1f5f9;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    .container {
-      max-width: 600px;
-      padding: 40px;
-    }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--bg-gradient-start),
+          var(--bg-gradient-end)
+        );
+        color: var(--text-primary);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
 
-    h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
+      body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          radial-gradient(
+            circle at 20% 80%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
 
-    p {
-      font-size: 1.1rem;
-      color: #cbd5e1;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
+      .container {
+        max-width: 600px;
+        padding: 40px;
+        position: relative;
+        z-index: 1;
+        animation: fadeIn 1s ease-in;
+      }
 
-    .tagline {
-      font-weight: 300;
-      font-size: 1rem;
-      margin-bottom: 40px;
-      color: #94a3b8;
-    }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-    .links {
-      display: flex;
-      gap: 25px;
-      justify-content: center;
-      margin-top: 20px;
-    }
+      h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+      }
 
-    .icon-link {
-      width: 50px;
-      height: 50px;
-      border: 1px solid #334155;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #f1f5f9;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
+      p {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
 
-    .icon-link:hover {
-      background-color: #334155;
-      transform: translateY(-3px);
-    }
+      .tagline {
+        font-weight: 300;
+        font-size: 1rem;
+        margin-bottom: 40px;
+        color: var(--text-muted);
+      }
 
-    footer {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-      font-size: 0.8rem;
-      color: #64748b;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Arcan Labs</h1>
-    <div class="tagline">Engineering Intelligent Digital Systems</div>
-    <p>
-      We're building innovative solutions at the intersection of technology,
-      automation, and scalable infrastructure.
-      <br><br>
-      Our platform is launching soon.
-    </p>
+      .links {
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+        margin-top: 20px;
+      }
 
-    <div class="links">
-      <a href="mailto:arcanlabslk@gmail.com" class="icon-link">
-        <i class="fas fa-envelope"></i>
-      </a>
+      .cta-button {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: var(--text-primary);
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+      }
 
-      <a href="https://www.linkedin.com/company/arcan-labs/" 
-         target="_blank" 
-         class="icon-link">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+      }
 
-      <a href="https://www.upwork.com/freelancers/~01278a9f03b9129133" 
-         target="_blank" 
-         class="icon-link">
-        <i class="fab fa-upwork"></i>
-      </a>
+      .icon-link {
+        width: 50px;
+        height: 50px;
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .icon-link:hover {
+        background-color: var(--hover-bg);
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+      }
+
+      footer {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Arcan Labs</h1>
+      <div class="tagline">Engineering Intelligent Digital Systems</div>
+      <p>
+        We're building innovative solutions at the intersection of technology,
+        automation, and scalable infrastructure.
+        <br /><br />
+        Our platform is launching soon.
+      </p>
+
+      <div class="links">
+        <a href="mailto:arcanlabslk@gmail.com" class="icon-link">
+          <i class="fas fa-envelope"></i>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/company/arcan-labs/"
+          target="_blank"
+          class="icon-link"
+        >
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+
+        <a
+          href="https://www.upwork.com/freelancers/~01278a9f03b9129133"
+          target="_blank"
+          class="icon-link"
+        >
+          <i class="fab fa-upwork"></i>
+        </a>
+      </div>
+
+      <a href="mailto:arcanlabslk@gmail.com" class="cta-button">Get In Touch</a>
     </div>
-  </div>
 
-  <footer>
-    © 2026 Arcan Labs. All rights reserved.
-  </footer>
-</body>
+    <footer>© 2026 Arcan Labs. All rights reserved.</footer>
+  </body>
 </html>
