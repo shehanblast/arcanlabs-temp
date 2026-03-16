@@ -19,19 +19,20 @@
 
     <style>
       :root {
-        --bg-gradient-start: #0f172a;
-        --bg-gradient-end: #1e293b;
-        --text-primary: #f1f5f9;
-        --text-secondary: #cbd5e1;
-        --text-muted: #94a3b8;
-        --border-color: #334155;
-        --hover-bg: #334155;
+        --primary: #2a6b6b; /* dark teal */
+        --accent: #3ca89a; /* teal accent */
+        --white: #ffffff;
+        --bg-dark: #181f23; /* almost black/charcoal */
+        --text-main: #f5f7fa;
+        --text-muted: #b6c2c9;
+        --border-color: #3ca89a;
+        --hover-bg: #3ca89a22;
         --bg-pos1: 20% 80%;
         --bg-pos2: 80% 20%;
         --bg-pos3: 40% 40%;
-        --bg-opacity1: 0.15;
-        --bg-opacity2: 0.15;
-        --bg-opacity3: 0.08;
+        --bg-opacity1: 0.1;
+        --bg-opacity2: 0.1;
+        --bg-opacity3: 0.06;
       }
 
       * {
@@ -42,12 +43,8 @@
 
       body {
         font-family: 'Inter', sans-serif;
-        background: linear-gradient(
-          135deg,
-          var(--bg-gradient-start),
-          var(--bg-gradient-end)
-        );
-        color: var(--text-primary);
+        background: var(--bg-dark);
+        color: var(--text-main);
         height: 100vh;
         display: flex;
         align-items: center;
@@ -67,17 +64,17 @@
         background-image:
           radial-gradient(
             circle at var(--bg-pos1),
-            rgba(59, 130, 246, var(--bg-opacity1)) 0%,
+            rgba(60, 168, 154, var(--bg-opacity1)) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at var(--bg-pos2),
-            rgba(147, 51, 234, var(--bg-opacity2)) 0%,
+            rgba(255, 255, 255, var(--bg-opacity2)) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at var(--bg-pos3),
-            rgba(255, 255, 255, var(--bg-opacity3)) 0%,
+            rgba(42, 107, 107, var(--bg-opacity3)) 0%,
             transparent 50%
           );
         pointer-events: none;
@@ -94,32 +91,50 @@
           --bg-opacity2: 0.15;
           --bg-opacity3: 0.08;
         }
-        25% {
+        16.67% {
+          transform: translateY(-2px) rotate(0.2deg);
+          --bg-pos1: 21% 79%;
+          --bg-pos2: 79% 21%;
+          --bg-pos3: 41% 39%;
+          --bg-opacity1: 0.16;
+          --bg-opacity2: 0.16;
+          --bg-opacity3: 0.085;
+        }
+        33.33% {
           transform: translateY(-5px) rotate(0.5deg);
           --bg-pos1: 22% 78%;
           --bg-pos2: 78% 22%;
           --bg-pos3: 42% 38%;
-          --bg-opacity1: 0.18;
-          --bg-opacity2: 0.18;
+          --bg-opacity1: 0.17;
+          --bg-opacity2: 0.17;
           --bg-opacity3: 0.09;
         }
         50% {
           transform: translateY(-10px) rotate(1deg);
-          --bg-pos1: 25% 75%;
-          --bg-pos2: 75% 25%;
-          --bg-pos3: 45% 35%;
-          --bg-opacity1: 0.2;
-          --bg-opacity2: 0.2;
-          --bg-opacity3: 0.1;
+          --bg-pos1: 23% 77%;
+          --bg-pos2: 77% 23%;
+          --bg-pos3: 43% 37%;
+          --bg-opacity1: 0.18;
+          --bg-opacity2: 0.18;
+          --bg-opacity3: 0.095;
         }
-        75% {
+        66.67% {
           transform: translateY(-5px) rotate(0.5deg);
           --bg-pos1: 22% 78%;
           --bg-pos2: 78% 22%;
           --bg-pos3: 42% 38%;
-          --bg-opacity1: 0.18;
-          --bg-opacity2: 0.18;
+          --bg-opacity1: 0.17;
+          --bg-opacity2: 0.17;
           --bg-opacity3: 0.09;
+        }
+        83.33% {
+          transform: translateY(-2px) rotate(0.2deg);
+          --bg-pos1: 21% 79%;
+          --bg-pos2: 79% 21%;
+          --bg-pos3: 41% 39%;
+          --bg-opacity1: 0.16;
+          --bg-opacity2: 0.16;
+          --bg-opacity3: 0.085;
         }
         100% {
           transform: translateY(0px) rotate(0deg);
@@ -137,6 +152,10 @@
         padding: 40px;
         position: relative;
         z-index: 1;
+        background: rgba(24, 31, 35, 0.96);
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+        color: var(--text-main);
         animation:
           fadeIn 1s ease-in,
           gentleFloat 4s ease-in-out infinite 1s;
@@ -168,11 +187,13 @@
         font-weight: 600;
         margin-bottom: 20px;
         letter-spacing: 1px;
+        color: var(--white);
+        text-shadow: 0 2px 12px #0004;
       }
 
       p {
         font-size: 1.1rem;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         margin-bottom: 30px;
         line-height: 1.6;
       }
@@ -181,7 +202,8 @@
         font-weight: 300;
         font-size: 1rem;
         margin-bottom: 40px;
-        color: var(--text-muted);
+        color: var(--accent);
+        letter-spacing: 2px;
       }
 
       .links {
@@ -195,13 +217,13 @@
         display: inline-block;
         margin-top: 40px;
         padding: 12px 24px;
-        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-        color: var(--text-primary);
+        background: linear-gradient(135deg, var(--accent), var(--primary));
+        color: var(--white);
         text-decoration: none;
         border-radius: 25px;
         font-weight: 600;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        box-shadow: 0 4px 15px rgba(60, 168, 154, 0.18);
         position: relative;
         overflow: hidden;
       }
@@ -216,7 +238,7 @@
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.2),
+          rgba(60, 168, 154, 0.18),
           transparent
         );
         transition: left 0.5s;
@@ -228,27 +250,29 @@
 
       .cta-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        box-shadow: 0 6px 20px rgba(60, 168, 154, 0.35);
       }
 
       .icon-link {
         width: 50px;
         height: 50px;
-        border: 1px solid var(--border-color);
+        border: 1.5px solid var(--accent);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--text-primary);
+        color: var(--accent);
+        background: var(--bg-dark);
         font-size: 1.2rem;
         transition: all 0.3s ease;
         text-decoration: none;
       }
 
       .icon-link:hover {
-        background-color: var(--hover-bg);
+        background-color: var(--accent);
+        color: var(--white);
         transform: translateY(-3px) scale(1.1);
-        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 15px rgba(60, 168, 154, 0.18);
       }
 
       footer {
